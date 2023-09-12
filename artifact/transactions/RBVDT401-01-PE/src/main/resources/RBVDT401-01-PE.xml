@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transaction xmlns="http://www.w3schools.com" transactionName="RBVDT401" application="RBVD" version="01" country="PE" language="ES">
+	<paramsIn/>
+	<paramsOut/>
+	<description>Transacción de cálculo de la información de devolución y número de plazos de contratación.</description>
+</transaction>
