@@ -1,6 +1,7 @@
 package com.bbva.rbvd;
 
 import com.bbva.elara.transaction.AbstractTransaction;
+import com.bbva.rbvd.dto.lifeinsrc.refund.DataDTO;
 import com.bbva.rbvd.dto.lifeinsrc.simulation.ParticipantDTO;
 import java.util.List;
 
@@ -18,5 +19,12 @@ public abstract class AbstractRBVDT40101PETransaction extends AbstractTransactio
 	 */
 	protected List<ParticipantDTO> getParticipants(){
 		return (List<ParticipantDTO>)this.getParameter("participants");
+	}
+
+	/**
+	 * Set value for List<DataDTO> output parameter data
+	 */
+	protected void setData(final List<DataDTO> field){
+		this.addParameter("data", field);
 	}
 }

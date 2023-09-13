@@ -17,6 +17,40 @@
 			</dto>
 		</list>
 	</paramsIn>
-	<paramsOut/>
+	<paramsOut>
+		<list order="1" name="data" mandatory="1">
+			<dto order="1" name="Type" mandatory="0" package="com.bbva.rbvd.dto.lifeinsrc.refund.DataDTO" artifactId="RBVDC301">
+				<list order="1" name="participants" mandatory="1">
+					<dto order="1" name="Type" mandatory="0" package="com.bbva.rbvd.dto.lifeinsrc.simulation.ParticipantDTO" artifactId="RBVDC301">
+						<parameter order="1" name="id" mandatory="1" type="String" size="10"/>
+						<dto order="2" name="participantType" mandatory="1" package="com.bbva.rbvd.dto.lifeinsrc.simulation.ParticipantTypeDTO" artifactId="RBVDC301">
+							<parameter order="1" name="id" mandatory="1" type="String" size="20"/>
+							<parameter order="2" name="name" mandatory="0" type="String" size="10"/>
+						</dto>
+						<dto order="3" name="identityDocument" mandatory="0" package="com.bbva.rbvd.dto.lifeinsrc.commons.IdentityDocumentDTO" artifactId="RBVDC301">
+							<dto order="1" name="documentType" mandatory="1" package="com.bbva.rbvd.dto.lifeinsrc.commons.DocumentTypeDTO" artifactId="RBVDC301">
+								<parameter order="1" name="id" mandatory="1" type="String" size="30"/>
+								<parameter order="2" name="name" mandatory="0" type="String" size="30"/>
+							</dto>
+							<parameter order="2" name="documentNumber" mandatory="0" type="String" size="30"/>
+						</dto>
+						<parameter order="4" name="birthDate" mandatory="0" type="String" size="10"/>
+					</dto>
+				</list>
+				<dto order="2" name="term" mandatory="0" package="com.bbva.rbvd.dto.lifeinsrc.commons.TermDTO" artifactId="RBVDC301">
+					<parameter order="1" name="number" mandatory="1" type="String" size="10"/>
+					<parameter order="2" name="unit" mandatory="1" type="String" size="10"/>
+				</dto>
+				<list order="3" name="refunds" mandatory="0">
+					<dto order="1" name="Type" mandatory="0" package="com.bbva.rbvd.dto.lifeinsrc.commons.RefundsDTO" artifactId="RBVDC301">
+						<dto order="1" name="unit" mandatory="1" package="com.bbva.rbvd.dto.lifeinsrc.commons.UnitDTO" artifactId="RBVDC301">
+							<parameter order="1" name="unitType" mandatory="1" type="String" size="20"/>
+							<parameter order="2" name="percentage" mandatory="1" type="Double" size="6"/>
+						</dto>
+					</dto>
+				</list>
+			</dto>
+		</list>
+	</paramsOut>
 	<description>Transacción de cálculo de la información de devolución y número de plazos de contratación.</description>
 </transaction>
