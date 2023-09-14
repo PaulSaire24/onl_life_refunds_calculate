@@ -1,8 +1,8 @@
 package com.bbva.rbvd;
 
 import com.bbva.elara.transaction.AbstractTransaction;
-import com.bbva.rbvd.dto.lifeinsrc.refund.DataDTO;
-import com.bbva.rbvd.dto.lifeinsrc.simulation.ParticipantDTO;
+import com.bbva.rbvd.dto.insuranceroyal.refund.DataDTO;
+import com.bbva.rbvd.dto.insuranceroyal.refund.ParticipantDTO;
 import java.util.List;
 
 /**
