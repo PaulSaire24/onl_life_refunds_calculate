@@ -5,6 +5,7 @@ import com.bbva.rbvd.dto.insuranceroyal.rimac.calculate.RefundCalculatedBO;
 import com.bbva.rbvd.dto.insuranceroyal.rimac.calculate.RefundRequestBO;
 import com.bbva.rbvd.dto.insuranceroyal.utils.InsuranceRoyalProperties;
 import com.bbva.rbvd.lib.r401.util.JsonHelper;
+import org.aspectj.lang.reflect.Advice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
@@ -39,9 +40,9 @@ public class RBVDR401Impl extends RBVDR401Abstract {
 
 		try {
 			response = this.externalApiConnector.postForObject(InsuranceRoyalProperties.REFUNDS_LIFE_CALCULATE.getValue(),entity,RefundCalculatedBO.class);
-			LOGGER.info("***** RBVDR401Impl - executeCalculateService ***** Response: {}", getRequestJson(response));
+			LOGGER.info("*** RBVDR401Impl - executeCalculateService *** Response: {}", getRequestJson(response));
 		}catch (RestClientException e){
-			LOGGER.debug("***** RBVDR401Impl - executeCalculateService ***** Exception: {}", e.getMessage());
+			LOGGER.debug("*** RBVDR401Impl - executeCalculateService *** Exception: {}", e.getMessage());
 		}
 		LOGGER.info("executeCalculateRefund end");
 
