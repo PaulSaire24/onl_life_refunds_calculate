@@ -13,7 +13,7 @@
 	<name>onl_life_refunds_calculate</name>
 	<description>Deployment unit onl_life_refunds_calculate of uuaa rbvd</description>
 	<properties>
-		<apx.core.online.version>7.9.6</apx.core.online.version>
+		<apx.core.online.version>7.10.0</apx.core.online.version>
 		<outputDirectoryDTOs>../../../target/dtos</outputDirectoryDTOs>
 		<outputDirectoryLibraries>../../../target/libraries</outputDirectoryLibraries>
 		<outputDirectoryTransactions>../../../target/transactions</outputDirectoryTransactions>
