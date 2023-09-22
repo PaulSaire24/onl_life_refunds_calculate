@@ -22,6 +22,7 @@ public class RBVDT40101PETransaction extends AbstractRBVDT40101PETransaction {
 		List<ParticipantDTO> participantDTOList= this.getParticipants();
 		if(Objects.nonNull(participantDTOList)){
 			participantDTOList.get(0).setTraceId((String) this.getRequestHeader().getHeaderParameter(RequestHeaderParamsName.REQUESTID));
+
 		}
 		List<RefundCalculateDTO> dataDTOList = rbvdR402.executeCalculateRefund(participantDTOList);
 
