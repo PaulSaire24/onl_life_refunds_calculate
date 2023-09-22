@@ -21,14 +21,8 @@ public class RBVDT40101PETransaction extends AbstractRBVDT40101PETransaction {
 		RBVDR402 rbvdR402 = this.getServiceLibrary(RBVDR402.class);
 		List<ParticipantDTO> participantDTOList= this.getParticipants();
 		if(Objects.nonNull(participantDTOList)){
-			participantDTOList.get(0).setSaleChannelId((String) this.getRequestHeader().getHeaderParameter(RequestHeaderParamsName.CHANNELCODE));
-			participantDTOList.get(0).setCreationUser((String) this.getRequestHeader().getHeaderParameter(RequestHeaderParamsName.USERCODE));
-			participantDTOList.get(0).setUserAudit((String) this.getRequestHeader().getHeaderParameter(RequestHeaderParamsName.USERCODE));
 			participantDTOList.get(0).setTraceId((String) this.getRequestHeader().getHeaderParameter(RequestHeaderParamsName.REQUESTID));
-			participantDTOList.get(0).setAap((String) this.getRequestHeader().getHeaderParameter(RequestHeaderParamsName.AAP));
 		}
-
-
 		List<RefundCalculateDTO> dataDTOList = rbvdR402.executeCalculateRefund(participantDTOList);
 
 		if(Objects.nonNull(dataDTOList)){
