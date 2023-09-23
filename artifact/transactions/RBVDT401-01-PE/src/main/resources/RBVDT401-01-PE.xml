@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transaction xmlns="http://www.w3schools.com" transactionName="RBVDT401" application="RBVD" version="01" country="PE" language="ES">
+	<paramsIn>
+		<parameter order="1" name="ind" mandatory="1" type="Boolean" size="0"/>
+	</paramsIn>
+	<paramsOut>
+		<parameter order="1" name="frase" mandatory="1" type="String" size="20"/>
+	</paramsOut>
+	<description>trx for refun calculate</description>
+</transaction>
