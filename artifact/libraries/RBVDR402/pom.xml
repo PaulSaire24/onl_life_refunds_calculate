@@ -7,11 +7,11 @@
 		<version>0.1.0-SNAPSHOT</version>
 	</parent>
 	<groupId>com.bbva.rbvd</groupId>
-	<artifactId>RBVDR401</artifactId>
-	<name>RBVDR401</name>
+	<artifactId>RBVDR402</artifactId>
+	<name>RBVDR402</name>
 	<version>0.1.0-SNAPSHOT</version>
 	<packaging>bundle</packaging>
-	<description>lib for refund calculate</description>
+	<description>lib for conexion rimac</description>
 	<properties>
 		<osgi.version.manifest>0.0</osgi.version.manifest>
 	</properties>
@@ -20,6 +20,11 @@
 			<groupId>com.bbva.rbvd.dto.insuranceroyal</groupId>
 			<artifactId>RBVDC204</artifactId>
 			<version>0.3.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.bbva.pisd.dto.insurance</groupId>
+			<artifactId>PISDC011</artifactId>
+			<version>0.23.0</version>
 		</dependency>
 	</dependencies>
 	<build>
