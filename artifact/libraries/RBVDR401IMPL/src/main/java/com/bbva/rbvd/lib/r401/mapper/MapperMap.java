@@ -22,7 +22,8 @@ public class MapperMap {
         LOGGER.info("contructionRequestRimac participantDTO: {}",participantDTOList);
         RefundCalculatedPayloadBO payload = new RefundCalculatedPayloadBO();
 
-        payload.setFechaNacimiento(String.valueOf(participantDTOList.get(0).getBirthDate()));
+        //payload.setFechaNacimiento(String.valueOf(participantDTOList.get(0).getBirthDate()));
+        payload.setFechaNacimiento("1989-05-12");
         payload.setNroDocumento(participantDTOList.get(0).getIdentityDocument().getDocumentNumber());
         payload.setProducto("VIDADINAMICO");
         payload.setTipoDocumento(this.applicationConfigurationService.getProperty(participantDTOList.get(0).getIdentityDocument().getDocumentType().getId()));

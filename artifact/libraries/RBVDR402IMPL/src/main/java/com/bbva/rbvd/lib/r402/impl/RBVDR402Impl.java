@@ -5,6 +5,7 @@ import com.bbva.rbvd.dto.insuranceroyal.rimac.calculate.RefundCalculatedBO;
 import com.bbva.rbvd.dto.insuranceroyal.rimac.calculate.RefundRequestBO;
 import com.bbva.rbvd.dto.insuranceroyal.utils.InsuranceRoyalProperties;
 import com.bbva.rbvd.lib.r402.util.JsonUtil;
+import com.bbva.rbvd.lib.r402.util.RimacExceptionHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
@@ -30,8 +31,10 @@ public class RBVDR402Impl extends RBVDR402Abstract {
 
 		SignatureAWS signatureAWS = this.pisdR014.executeSignatureConstruction(requestJson , HttpMethod.POST,
 				uri, null, traceId);
+		LOGGER.info("***** RBVDR402Impl - executeCalculateService ***** signatureAWS: {}", signatureAWS);
 
 		HttpEntity<String> entity = new HttpEntity<>(requestJson, createHttpHeadersAWS(signatureAWS));
+		LOGGER.info("***** RBVDR402Impl - executeCalculateService ***** HttpEntity: {}", entity);
 
 		RefundCalculatedBO response = null;
 
@@ -40,7 +43,10 @@ public class RBVDR402Impl extends RBVDR402Abstract {
 			LOGGER.info("*** RBVDR402Impl - executeCalculateService *** Response: {}", getRequestJson(response));
 		}catch (RestClientException e){
 			LOGGER.debug("*** RBVDR402Impl - executeCalculateService *** Exception: {}", e.getMessage());
+			RimacExceptionHandler exceptionHandler = new RimacExceptionHandler();
+			exceptionHandler.handler(e);
 		}
+		LOGGER.info("executeCalculateRefund response {}",response);
 		LOGGER.info("executeCalculateRefund end");
 
 		return response;

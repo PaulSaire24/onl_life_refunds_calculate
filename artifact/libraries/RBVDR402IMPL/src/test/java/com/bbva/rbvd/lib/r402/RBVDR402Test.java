@@ -1,5 +1,6 @@
 package com.bbva.rbvd.lib.r402;
 
+import com.bbva.apx.exception.business.BusinessException;
 import com.bbva.elara.configuration.manager.application.ApplicationConfigurationService;
 import com.bbva.elara.domain.transaction.Context;
 import com.bbva.elara.domain.transaction.ThreadContext;
@@ -119,7 +120,7 @@ public class RBVDR402Test {
 		Assert.assertEquals(0, context.getAdviceList().size());
 	}
 
-	@Test
+	@Test(expected = BusinessException.class)
 	public void executeTestException(){
 		LOGGER.info("executeTestException Start");
 
@@ -129,14 +130,12 @@ public class RBVDR402Test {
 				.thenReturn(signatureAWS);
 
 		when(externalApiConnector.postForObject(anyString(), any(HttpEntity.class),eq(RefundCalculatedBO.class))).
-				thenThrow(new RestClientException("error en el servicio"));
+				thenThrow(new RestClientException("ANY ERROR",new Throwable()));
 
 		RefundRequestBO payload = new RefundRequestBO();
 		String traceId = "123456789";
 
 		rbvdR402.executeCalculateService(payload,traceId);
-
-		Assert.assertEquals(0, context.getAdviceList().size());
 	}
 
 }
