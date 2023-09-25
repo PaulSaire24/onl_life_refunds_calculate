@@ -16,7 +16,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 import org.slf4j.Logger;
@@ -25,9 +24,9 @@ import org.springframework.aop.framework.Advised;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import static org.mockito.Matchers.anyObject;
@@ -87,7 +86,7 @@ public class RBVDR401Test {
 		identityDocumentDTO.setDocumentType(documentTypeDTO);
 		identityDocumentDTO.setDocumentNumber("45784578");
 		participantDTO.setIdentityDocument(identityDocumentDTO);
-		participantDTO.setBirthDate(LocalDate.parse("2023-05-15"));
+		participantDTO.setBirthDate(new Date());
 		participantDTO.setId("90008806");
 		participantDTO.setTraceId("56468446846");
 		participantDTOList.add(participantDTO);
