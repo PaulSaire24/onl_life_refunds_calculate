@@ -33,7 +33,6 @@ public class MapperBean {
             TermDTO termDTO = new TermDTO();
             termDTO.setNumber(obj.getPlazo());
             dataDTO.setTerm(termDTO);
-            LOGGER.info("Term unit {}",termDTO.getUnit());
             //refund
             List<RefundsDTO> refundsDTOList = new ArrayList<>();
 
