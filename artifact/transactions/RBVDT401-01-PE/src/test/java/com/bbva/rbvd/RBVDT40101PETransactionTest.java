@@ -8,9 +8,13 @@ import com.bbva.elara.domain.transaction.request.body.CommonRequestBody;
 import com.bbva.elara.domain.transaction.request.header.CommonRequestHeader;
 import com.bbva.elara.test.osgi.DummyBundleContext;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import javax.annotation.Resource;
 
+import com.bbva.rbvd.dto.insuranceroyal.refund.ParticipantDTO;
+import com.bbva.rbvd.dto.insuranceroyal.refund.RefundCalculateDTO;
 import com.bbva.rbvd.lib.r401.RBVDR401;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +28,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Matchers.anyList;
+import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.when;
 import static org.junit.Assert.assertTrue;
 
@@ -72,8 +76,10 @@ public class RBVDT40101PETransactionTest {
 	@Test
 	public void testNotNull(){
 		LOGGER.info("RBVDT40101PETransactionTest - Executing testNotNull...");
-
-		when(this.rbvdr401.executeCalculateRefund(anyList())).thenReturn(new ArrayList<>());
+		ParticipantDTO participantDTO = new ParticipantDTO();
+		RefundCalculateDTO refundCalculateDTO = new RefundCalculateDTO();
+		refundCalculateDTO.setParticipants(Collections.singletonList(participantDTO));
+		when(this.rbvdr401.executeCalculateRefund(anyObject())).thenReturn(Collections.singletonList(refundCalculateDTO));
 		this.transaction.execute();
 		assertTrue(this.transaction.getAdviceList().isEmpty());
 	}
@@ -81,7 +87,7 @@ public class RBVDT40101PETransactionTest {
 	@Test
 	public void testEmpy(){
 		LOGGER.info("RBVDT40101PETransactionTest - Executing testEmpy...");
-		when(this.rbvdr401.executeCalculateRefund(anyList())).thenReturn(null);
+		when(this.rbvdr401.executeCalculateRefund(anyObject())).thenReturn(null);
 		this.transaction.execute();
 		assertEquals(Severity.ENR.getValue(), this.transaction.getSeverity().getValue());
 	}

@@ -74,7 +74,6 @@ public class RBVDR401Test {
 	public void executeTest(){
 		LOGGER.info(" RBVDR401Test executeTest Start");
 
-		List<ParticipantDTO> participantDTOList = new ArrayList<>();
 		ParticipantDTO participantDTO = new ParticipantDTO();
 		participantDTO.setId("2452");
 		ParticipantTypeDTO participantTypeDTO = new ParticipantTypeDTO();
@@ -89,7 +88,6 @@ public class RBVDR401Test {
 		participantDTO.setBirthDate(new Date());
 		participantDTO.setId("90008806");
 		participantDTO.setTraceId("56468446846");
-		participantDTOList.add(participantDTO);
 
 
 		RefundCalculatedBO refundCalculatedBO = new RefundCalculatedBO();
@@ -103,7 +101,7 @@ public class RBVDR401Test {
 		refundCalculatedBO.setPayload(Collections.singletonList(refundCalculatedPayloadBO));
 
 		when(rbvdr402.executeCalculateService(anyObject(),anyString())).thenReturn(refundCalculatedBO);
-		rbvdR401.executeCalculateRefund(participantDTOList);
+		rbvdR401.executeCalculateRefund(participantDTO);
 
 		Assert.assertEquals(0, context.getAdviceList().size());
 	}

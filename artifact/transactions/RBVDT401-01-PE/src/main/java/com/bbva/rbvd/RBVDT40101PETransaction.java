@@ -10,9 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.CollectionUtils;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 public class RBVDT40101PETransaction extends AbstractRBVDT40101PETransaction {
 
@@ -20,13 +18,15 @@ public class RBVDT40101PETransaction extends AbstractRBVDT40101PETransaction {
 	@Override
 	public void execute() {
 		RBVDR401 rbvdR401 = this.getServiceLibrary(RBVDR401.class);
-		List<ParticipantDTO> participantDTOList= this.getParticipants();
-		if(!CollectionUtils.isEmpty(participantDTOList)){
-			participantDTOList.get(0).setTraceId((String) this.getRequestHeader().getHeaderParameter(RequestHeaderParamsName.REQUESTID));
+		ParticipantDTO participantDTO = new ParticipantDTO();
+		if (!CollectionUtils.isEmpty(this.getParticipants())){
+			participantDTO = this.getParticipants().get(0);
 		}
-		List<RefundCalculateDTO> dataDTOList = rbvdR401.executeCalculateRefund(participantDTOList);
+		participantDTO.setTraceId((String) this.getRequestHeader().getHeaderParameter(RequestHeaderParamsName.REQUESTID));
 
-		if(Objects.nonNull(dataDTOList)){
+		List<RefundCalculateDTO> dataDTOList = rbvdR401.executeCalculateRefund(participantDTO);
+
+		if(!CollectionUtils.isEmpty(dataDTOList)){
 			this.setData(dataDTOList);
 			this.setHttpResponseCode(HttpResponseCode.HTTP_CODE_200, Severity.OK);
 			this.setSeverity(Severity.OK);

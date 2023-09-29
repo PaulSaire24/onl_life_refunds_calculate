@@ -77,40 +77,10 @@ public class RBVDR402Test {
 	public void executeTest(){
 		LOGGER.info("executeTest Start");
 
-		/*List<ParticipantDTO> participantDTOList = new ArrayList<>();
-		ParticipantDTO participantDTO = new ParticipantDTO();
-		participantDTO.setId("2452");
-		ParticipantTypeDTO participantTypeDTO = new ParticipantTypeDTO();
-		participantTypeDTO.setId("BENEFICIARY");
-		participantDTO.setParticipantType(participantTypeDTO);
-		IdentityDocumentDTO identityDocumentDTO = new IdentityDocumentDTO();
-		DocumentTypeDTO documentTypeDTO = new DocumentTypeDTO();
-		documentTypeDTO.setId("DNI");
-		identityDocumentDTO.setDocumentType(documentTypeDTO);
-		identityDocumentDTO.setDocumentNumber("45784578");
-		participantDTO.setIdentityDocument(identityDocumentDTO);
-		participantDTO.setBirthDate("2023-05-15");
-		participantDTO.setId("90008806");
-		participantDTO.setTraceId("56468446846");
-		participantDTOList.add(participantDTO);*/
-
 		//when(pisdr014.executeSignatureConstruction(anyString(),anyString(),anyString(),anyString(),anyString())).thenReturn(new SignatureAWS());
 		SignatureAWS signatureAWS = new SignatureAWS("sfe","hhh","6454454","jhgygygygyg");
 		when(pisdr014.executeSignatureConstruction(anyString(), anyString(), anyString(), anyString(), anyString()))
 				.thenReturn(signatureAWS);
-
-		/*RefundCalculatedBO refundCalculatedBO = new RefundCalculatedBO();
-		RefundCalculatedPayloadBO refundCalculatedPayloadBO = new RefundCalculatedPayloadBO();
-		refundCalculatedPayloadBO.setNroDocumento("75489614");
-
-		PorcentajeDTO porcentajeDTO = new PorcentajeDTO();
-		porcentajeDTO.setPorcentaje(45);
-
-		refundCalculatedPayloadBO.setPorcentajes(Collections.singletonList(porcentajeDTO));
-		refundCalculatedBO.setPayload(Collections.singletonList(refundCalculatedPayloadBO));
-
-		when(externalApiConnector.postForObject(anyString(), any(HttpEntity.class),eq(RefundCalculatedBO.class))).
-				thenReturn(refundCalculatedBO);*/
 
 		RefundRequestBO payload = new RefundRequestBO();
 		String traceId = "123456789";
