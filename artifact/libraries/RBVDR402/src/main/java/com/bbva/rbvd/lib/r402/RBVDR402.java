@@ -1,10 +1,10 @@
 package com.bbva.rbvd.lib.r402;
 
-import com.bbva.rbvd.dto.insuranceroyal.rimac.calculate.RefundCalculatedBO;
-import com.bbva.rbvd.dto.insuranceroyal.rimac.calculate.RefundRequestBO;
+import com.bbva.rbvd.dto.insurancerefunds.rimac.RefundCalculateResponseBO;
+import com.bbva.rbvd.dto.insurancerefunds.rimac.RefundRequestBO;
 
 public interface RBVDR402 {
 
- RefundCalculatedBO executeCalculateService(RefundRequestBO payload, String traceId);
+ RefundCalculateResponseBO executeCalculateService(RefundRequestBO payload, String traceId);
 
 }
