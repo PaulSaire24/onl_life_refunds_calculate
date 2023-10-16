@@ -1,13 +1,13 @@
 package com.bbva.rbvd.lib.r401.transform.list;
 
-import com.bbva.rbvd.dto.insuranceroyal.refund.ParticipantDTO;
-import com.bbva.rbvd.dto.insuranceroyal.refund.RefundCalculateDTO;
-import com.bbva.rbvd.dto.insuranceroyal.refund.TermDTO;
-import com.bbva.rbvd.dto.insuranceroyal.refund.UnitDTO;
-import com.bbva.rbvd.dto.insuranceroyal.refund.RefundsDTO;
-import com.bbva.rbvd.dto.insuranceroyal.rimac.calculate.RefundCalculatedBO;
-import com.bbva.rbvd.dto.insuranceroyal.rimac.calculate.RefundCalculatedPayloadBO;
-import com.bbva.rbvd.lib.r401.util.ConstansUtil;
+import com.bbva.rbvd.dto.insurancerefunds.refund.ParticipantDTO;
+import com.bbva.rbvd.dto.insurancerefunds.refund.RefundCalculateDTO;
+import com.bbva.rbvd.dto.insurancerefunds.refund.TermDTO;
+import com.bbva.rbvd.dto.insurancerefunds.refund.UnitDTO;
+import com.bbva.rbvd.dto.insurancerefunds.refund.RefundsDTO;
+import com.bbva.rbvd.dto.insurancerefunds.rimac.RefundCalculateResponseBO;
+import com.bbva.rbvd.dto.insurancerefunds.rimac.RefundCalculatedPayloadBO;
+import com.bbva.rbvd.dto.insurancerefunds.utils.Constans;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,7 +18,7 @@ import java.util.List;
 
 public class RefundCalculateList {
     private static final Logger LOGGER = LoggerFactory.getLogger(RefundCalculateList.class);
-    public static List<RefundCalculateDTO> constructionResponse(RefundCalculatedBO reponseRimac, ParticipantDTO participantDTO){
+    public static List<RefundCalculateDTO> constructionResponse(RefundCalculateResponseBO reponseRimac, ParticipantDTO participantDTO){
         LOGGER.info("constructionResponse start");
         LOGGER.info("constructionResponse reponseRimac {}",reponseRimac);
         LOGGER.info("constructionResponse reponseRimac {}",reponseRimac.getPayload().size());
@@ -39,7 +39,7 @@ public class RefundCalculateList {
 
             for (Integer ob:obj.getPorcentajes()) {
                 UnitDTO unitDTO = new UnitDTO();
-                unitDTO.setUnitType(ConstansUtil.PERCENTAGE);
+                unitDTO.setUnitType(Constans.PERCENTAGE);
                 unitDTO.setPercentage(BigDecimal.valueOf(ob));
                 RefundsDTO refundsDTO = new RefundsDTO();
                 refundsDTO.setUnit(unitDTO);

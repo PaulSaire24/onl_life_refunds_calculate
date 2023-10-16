@@ -9,12 +9,12 @@ import com.bbva.elara.domain.transaction.request.header.CommonRequestHeader;
 import com.bbva.elara.test.osgi.DummyBundleContext;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+
 
 import javax.annotation.Resource;
 
-import com.bbva.rbvd.dto.insuranceroyal.refund.ParticipantDTO;
-import com.bbva.rbvd.dto.insuranceroyal.refund.RefundCalculateDTO;
+import com.bbva.rbvd.dto.insurancerefunds.refund.ParticipantDTO;
+import com.bbva.rbvd.dto.insurancerefunds.refund.RefundCalculateDTO;
 import com.bbva.rbvd.lib.r401.RBVDR401;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,9 +28,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.when;
-import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {

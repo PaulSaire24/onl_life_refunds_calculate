@@ -5,12 +5,12 @@ import com.bbva.elara.domain.transaction.Context;
 import com.bbva.elara.domain.transaction.ThreadContext;
 import javax.annotation.Resource;
 
-import com.bbva.rbvd.dto.insuranceroyal.commons.DocumentTypeDTO;
-import com.bbva.rbvd.dto.insuranceroyal.commons.IdentityDocumentDTO;
-import com.bbva.rbvd.dto.insuranceroyal.refund.ParticipantDTO;
-import com.bbva.rbvd.dto.insuranceroyal.refund.ParticipantTypeDTO;
-import com.bbva.rbvd.dto.insuranceroyal.rimac.calculate.RefundCalculatedBO;
-import com.bbva.rbvd.dto.insuranceroyal.rimac.calculate.RefundCalculatedPayloadBO;
+import com.bbva.rbvd.dto.insurancerefunds.commons.DocumentTypeDTO;
+import com.bbva.rbvd.dto.insurancerefunds.commons.IdentityDocumentDTO;
+import com.bbva.rbvd.dto.insurancerefunds.refund.ParticipantDTO;
+import com.bbva.rbvd.dto.insurancerefunds.refund.ParticipantTypeDTO;
+import com.bbva.rbvd.dto.insurancerefunds.rimac.RefundCalculateResponseBO;
+import com.bbva.rbvd.dto.insurancerefunds.rimac.RefundCalculatedPayloadBO;
 import com.bbva.rbvd.lib.r402.RBVDR402;
 import org.junit.Assert;
 import org.junit.Before;
@@ -90,7 +90,7 @@ public class RBVDR401Test {
 		participantDTO.setTraceId("56468446846");
 
 
-		RefundCalculatedBO refundCalculatedBO = new RefundCalculatedBO();
+		RefundCalculateResponseBO refundCalculatedBO = new RefundCalculateResponseBO();
 		RefundCalculatedPayloadBO refundCalculatedPayloadBO = new RefundCalculatedPayloadBO();
 		refundCalculatedPayloadBO.setNroDocumento("75489614");
 		List<Integer> er = new ArrayList<>();

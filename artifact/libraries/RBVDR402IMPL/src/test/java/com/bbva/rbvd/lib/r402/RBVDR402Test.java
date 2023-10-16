@@ -8,8 +8,8 @@ import javax.annotation.Resource;
 
 import com.bbva.elara.utility.api.connector.APIConnector;
 import com.bbva.pisd.dto.insurance.amazon.SignatureAWS;
-import com.bbva.rbvd.dto.insuranceroyal.rimac.calculate.RefundCalculatedBO;
-import com.bbva.rbvd.dto.insuranceroyal.rimac.calculate.RefundRequestBO;
+import com.bbva.rbvd.dto.insurancerefunds.rimac.RefundCalculateResponseBO;
+import com.bbva.rbvd.dto.insurancerefunds.rimac.RefundRequestBO;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -99,7 +99,7 @@ public class RBVDR402Test {
 		when(pisdr014.executeSignatureConstruction(anyString(), anyString(), anyString(), anyString(), anyString()))
 				.thenReturn(signatureAWS);
 
-		when(externalApiConnector.postForObject(anyString(), any(HttpEntity.class),eq(RefundCalculatedBO.class))).
+		when(externalApiConnector.postForObject(anyString(), any(HttpEntity.class),eq(RefundCalculateResponseBO.class))).
 				thenThrow(new RestClientException("ANY ERROR",new Throwable()));
 
 		RefundRequestBO payload = new RefundRequestBO();

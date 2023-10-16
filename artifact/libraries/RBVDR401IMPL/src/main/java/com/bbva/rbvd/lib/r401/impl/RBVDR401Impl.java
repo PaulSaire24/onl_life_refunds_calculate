@@ -1,9 +1,9 @@
 package com.bbva.rbvd.lib.r401.impl;
 
-import com.bbva.rbvd.dto.insuranceroyal.refund.ParticipantDTO;
-import com.bbva.rbvd.dto.insuranceroyal.refund.RefundCalculateDTO;
-import com.bbva.rbvd.dto.insuranceroyal.rimac.calculate.RefundCalculatedBO;
-import com.bbva.rbvd.dto.insuranceroyal.rimac.calculate.RefundRequestBO;
+import com.bbva.rbvd.dto.insurancerefunds.refund.ParticipantDTO;
+import com.bbva.rbvd.dto.insurancerefunds.refund.RefundCalculateDTO;
+import com.bbva.rbvd.dto.insurancerefunds.rimac.RefundCalculateResponseBO;
+import com.bbva.rbvd.dto.insurancerefunds.rimac.RefundRequestBO;
 import com.bbva.rbvd.lib.r401.transform.bean.RefundRequestBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +25,7 @@ public class RBVDR401Impl extends RBVDR401Abstract {
 		RefundRequestBean refundRequestBean = new RefundRequestBean(this.applicationConfigurationService);
 		RefundRequestBO payload = refundRequestBean.contructionRequestRimac(participantDTO);
 
-		RefundCalculatedBO response = this.rbvdR402.executeCalculateService(payload,participantDTO.getTraceId());
+		RefundCalculateResponseBO response = this.rbvdR402.executeCalculateService(payload,participantDTO.getTraceId());
 
 		LOGGER.info("RBVDR401Impl -- executeCalculateRefund end");
 		return constructionResponse(response,participantDTO);

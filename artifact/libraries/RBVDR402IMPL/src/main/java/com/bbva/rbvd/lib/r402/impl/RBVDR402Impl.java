@@ -1,9 +1,10 @@
 package com.bbva.rbvd.lib.r402.impl;
 
 import com.bbva.pisd.dto.insurance.amazon.SignatureAWS;
-import com.bbva.rbvd.dto.insuranceroyal.rimac.calculate.RefundCalculatedBO;
-import com.bbva.rbvd.dto.insuranceroyal.rimac.calculate.RefundRequestBO;
-import com.bbva.rbvd.dto.insuranceroyal.utils.InsuranceRoyalProperties;
+import com.bbva.rbvd.dto.insurancerefunds.rimac.RefundCalculateResponseBO;
+import com.bbva.rbvd.dto.insurancerefunds.rimac.RefundRequestBO;
+import com.bbva.rbvd.dto.insurancerefunds.utils.InsuranceRefundsProperties;
+import com.bbva.rbvd.dto.insurancerefunds.utils.Constans;
 import com.bbva.rbvd.lib.r402.util.JsonUtil;
 import com.bbva.rbvd.lib.r402.util.RimacExceptionHandler;
 import org.slf4j.Logger;
@@ -18,16 +19,16 @@ import java.nio.charset.StandardCharsets;
 
 public class RBVDR402Impl extends RBVDR402Abstract {
 	private static final Logger LOGGER = LoggerFactory.getLogger(RBVDR402Impl.class);
-	private static final String AUTHORIZATION = "Authorization";
+
 
 	@Override
-	public RefundCalculatedBO executeCalculateService(RefundRequestBO payload, String traceId) {
+	public RefundCalculateResponseBO executeCalculateService(RefundRequestBO payload, String traceId) {
 		LOGGER.info("***** RBVDR402Impl - executeCalculateService ***** payload body: {}", payload);
 		String requestJson = getRequestJson(payload);
 
 		LOGGER.info("***** RBVDR402Impl - executeCalculateService ***** Request body: {}", requestJson);
 
-		String uri = this.applicationConfigurationService.getProperty(InsuranceRoyalProperties.REFUNDS_LIFE_CALCULATE_URI.getValue());
+		String uri = this.applicationConfigurationService.getProperty(InsuranceRefundsProperties.REFUNDS_LIFE_CALCULATE_URI.getValue());
 
 		SignatureAWS signatureAWS = this.pisdR014.executeSignatureConstruction(requestJson , HttpMethod.POST,
 				uri, null, traceId);
@@ -36,10 +37,10 @@ public class RBVDR402Impl extends RBVDR402Abstract {
 		HttpEntity<String> entity = new HttpEntity<>(requestJson, createHttpHeadersAWS(signatureAWS));
 		LOGGER.info("***** RBVDR402Impl - executeCalculateService ***** HttpEntity: {}", entity);
 
-		RefundCalculatedBO response = null;
+		RefundCalculateResponseBO response = null;
 
 		try {
-			response = this.externalApiConnector.postForObject(InsuranceRoyalProperties.REFUNDS_LIFE_CALCULATE.getValue(),entity,RefundCalculatedBO.class);
+			response = this.externalApiConnector.postForObject(InsuranceRefundsProperties.REFUNDS_LIFE_CALCULATE.getValue(),entity,RefundCalculateResponseBO.class);
 			LOGGER.info("*** RBVDR402Impl - executeCalculateService *** Response: {}", getRequestJson(response));
 		}catch (RestClientException e){
 			LOGGER.debug("*** RBVDR402Impl - executeCalculateService *** Exception: {}", e.getMessage());
@@ -58,7 +59,7 @@ public class RBVDR402Impl extends RBVDR402Abstract {
 		HttpHeaders headers = new HttpHeaders();
 		MediaType mediaType = new MediaType("application", "json", StandardCharsets.UTF_8);
 		headers.setContentType(mediaType);
-		headers.set(AUTHORIZATION, signature.getAuthorization());
+		headers.set(Constans.AUTHORIZATION, signature.getAuthorization());
 		headers.set("X-Amz-Date", signature.getxAmzDate());
 		headers.set("x-api-key", signature.getxApiKey());
 		headers.set("traceId", signature.getTraceId());

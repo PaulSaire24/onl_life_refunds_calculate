@@ -2,16 +2,16 @@
 <transaction xmlns="http://www.w3schools.com" transactionName="RBVDT401" application="RBVD" version="01" country="PE" language="ES">
 	<paramsIn>
 		<list order="1" name="participants" mandatory="1">
-			<dto order="1" name="Type" mandatory="0" package="com.bbva.rbvd.dto.insuranceroyal.refund.ParticipantDTO" artifactId="RBVDC204">
+			<dto order="1" name="Type" mandatory="0" package="com.bbva.rbvd.dto.insurancerefunds.refund.ParticipantDTO" artifactId="RBVDC401">
 				<parameter order="1" name="id" mandatory="0" type="String" size="20"/>
-				<dto order="2" name="participantType" mandatory="1" package="com.bbva.rbvd.dto.insuranceroyal.refund.ParticipantTypeDTO" artifactId="RBVDC204">
+				<dto order="2" name="participantType" mandatory="1" package="com.bbva.rbvd.dto.insurancerefunds.refund.ParticipantTypeDTO" artifactId="RBVDC401">
 					<parameter order="1" name="id" mandatory="1" type="String" size="20"/>
 				</dto>
-				<dto order="3" name="identityDocument" mandatory="0" package="com.bbva.rbvd.dto.insuranceroyal.commons.IdentityDocumentDTO" artifactId="RBVDC204">
-					<dto order="1" name="documentType" mandatory="1" package="com.bbva.rbvd.dto.insuranceroyal.commons.DocumentTypeDTO" artifactId="RBVDC204">
+				<dto order="3" name="identityDocument" mandatory="0" package="com.bbva.rbvd.dto.insurancerefunds.commons.IdentityDocumentDTO" artifactId="RBVDC401">
+					<parameter order="1" name="documentNumber" mandatory="1" type="String" size="30"/>
+					<dto order="2" name="documentType" mandatory="1" package="com.bbva.rbvd.dto.insurancerefunds.commons.DocumentTypeDTO" artifactId="RBVDC401">
 						<parameter order="1" name="id" mandatory="1" type="String" size="30"/>
 					</dto>
-					<parameter order="2" name="documentNumber" mandatory="1" type="String" size="30"/>
 				</dto>
 				<parameter order="4" name="birthDate" mandatory="0" type="Date (YYYY-MM-DD)" size="0"/>
 			</dto>
@@ -19,31 +19,31 @@
 	</paramsIn>
 	<paramsOut>
 		<list order="1" name="data" mandatory="1">
-			<dto order="1" name="Type" mandatory="0" package="com.bbva.rbvd.dto.insuranceroyal.refund.RefundCalculateDTO" artifactId="RBVDC204">
+			<dto order="1" name="Type" mandatory="0" package="com.bbva.rbvd.dto.insurancerefunds.refund.RefundCalculateDTO" artifactId="RBVDC401">
 				<list order="1" name="participants" mandatory="1">
-					<dto order="1" name="Type" mandatory="0" package="com.bbva.rbvd.dto.insuranceroyal.refund.ParticipantDTO" artifactId="RBVDC204">
+					<dto order="1" name="Type" mandatory="0" package="com.bbva.rbvd.dto.insurancerefunds.refund.ParticipantDTO" artifactId="RBVDC401">
 						<parameter order="1" name="id" mandatory="0" type="String" size="20"/>
-						<dto order="2" name="participantType" mandatory="1" package="com.bbva.rbvd.dto.insuranceroyal.refund.ParticipantTypeDTO" artifactId="RBVDC204">
-							<parameter order="1" name="id" mandatory="1" type="String" size="20"/>
-							<parameter order="2" name="name" mandatory="0" type="String" size="20"/>
+						<dto order="2" name="participantType" mandatory="1" package="com.bbva.rbvd.dto.insurancerefunds.refund.ParticipantTypeDTO" artifactId="RBVDC401">
+							<parameter order="1" name="id" mandatory="1" type="String" size="30"/>
+							<parameter order="2" name="name" mandatory="0" type="String" size="30"/>
 						</dto>
-						<dto order="3" name="identityDocument" mandatory="0" package="com.bbva.rbvd.dto.insuranceroyal.commons.IdentityDocumentDTO" artifactId="RBVDC204">
-							<dto order="1" name="documentType" mandatory="1" package="com.bbva.rbvd.dto.insuranceroyal.commons.DocumentTypeDTO" artifactId="RBVDC204">
+						<dto order="3" name="identityDocument" mandatory="1" package="com.bbva.rbvd.dto.insurancerefunds.commons.IdentityDocumentDTO" artifactId="RBVDC401">
+							<dto order="1" name="documentType" mandatory="1" package="com.bbva.rbvd.dto.insurancerefunds.commons.DocumentTypeDTO" artifactId="RBVDC401">
 								<parameter order="1" name="id" mandatory="1" type="String" size="30"/>
 								<parameter order="2" name="name" mandatory="0" type="String" size="30"/>
 							</dto>
-							<parameter order="2" name="documentNumber" mandatory="1" type="String" size="12"/>
+							<parameter order="2" name="documentNumber" mandatory="1" type="String" size="30"/>
 						</dto>
 						<parameter order="4" name="birthDate" mandatory="0" type="Date (YYYY-MM-DD)" size="0"/>
 					</dto>
 				</list>
-				<dto order="2" name="term" mandatory="0" package="com.bbva.rbvd.dto.insuranceroyal.refund.TermDTO" artifactId="RBVDC204">
-					<parameter order="1" name="number" mandatory="1" type="Double" size="10"/>
-					<parameter order="2" name="unit" mandatory="1" type="String" size="10"/>
+				<dto order="2" name="term" mandatory="0" package="com.bbva.rbvd.dto.insurancerefunds.refund.TermDTO" artifactId="RBVDC401">
+					<parameter order="1" name="number" mandatory="1" type="Double" size="6"/>
+					<parameter order="2" name="unit" mandatory="1" type="String" size="8"/>
 				</dto>
 				<list order="3" name="refunds" mandatory="0">
-					<dto order="1" name="Type" mandatory="0" package="com.bbva.rbvd.dto.insuranceroyal.refund.RefundsDTO" artifactId="RBVDC204">
-						<dto order="1" name="unit" mandatory="1" package="com.bbva.rbvd.dto.insuranceroyal.refund.UnitDTO" artifactId="RBVDC204">
+					<dto order="1" name="Type" mandatory="0" package="com.bbva.rbvd.dto.insurancerefunds.refund.RefundsDTO" artifactId="RBVDC401">
+						<dto order="1" name="unit" mandatory="1" package="com.bbva.rbvd.dto.insurancerefunds.refund.UnitDTO" artifactId="RBVDC401">
 							<parameter order="1" name="unitType" mandatory="1" type="String" size="20"/>
 							<parameter order="2" name="percentage" mandatory="1" type="Double" size="6"/>
 						</dto>

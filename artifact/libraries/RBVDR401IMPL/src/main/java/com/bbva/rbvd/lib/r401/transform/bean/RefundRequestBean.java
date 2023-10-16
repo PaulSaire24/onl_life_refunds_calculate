@@ -1,21 +1,19 @@
 package com.bbva.rbvd.lib.r401.transform.bean;
 
 import com.bbva.elara.configuration.manager.application.ApplicationConfigurationService;
-import com.bbva.rbvd.dto.insuranceroyal.refund.ParticipantDTO;
-import com.bbva.rbvd.dto.insuranceroyal.rimac.calculate.RefundCalculatedPayloadBO;
-import com.bbva.rbvd.dto.insuranceroyal.rimac.calculate.RefundRequestBO;
-import com.bbva.rbvd.lib.r401.util.ConstansUtil;
+import com.bbva.rbvd.dto.insurancerefunds.refund.ParticipantDTO;
+import com.bbva.rbvd.dto.insurancerefunds.rimac.RefundCalculatedPayloadBO;
+import com.bbva.rbvd.dto.insurancerefunds.rimac.RefundRequestBO;
+import com.bbva.rbvd.dto.insurancerefunds.utils.Constans;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.Objects;
 
 public class RefundRequestBean {
     private static final Logger LOGGER = LoggerFactory.getLogger(RefundRequestBean.class);
-    private static final ZoneId ZONE_ID = ZoneId.of("GMT");
     private final ApplicationConfigurationService applicationConfigurationService;
 
     public RefundRequestBean(ApplicationConfigurationService applicationConfigurationService) {
@@ -33,7 +31,7 @@ public class RefundRequestBean {
             payload.setFechaNacimiento(String.valueOf(toLocalDate(participantDTO.getBirthDate())));
         }
         payload.setNroDocumento(participantDTO.getIdentityDocument().getDocumentNumber());
-        payload.setProducto(ConstansUtil.PRODUCTO);
+        payload.setProducto(Constans.PRODUCTO);
         payload.setTipoDocumento(this.applicationConfigurationService.getProperty(participantDTO.getIdentityDocument().getDocumentType().getId()));
 
         requesRimac.setPayload(payload);
@@ -43,6 +41,6 @@ public class RefundRequestBean {
     }
 
     public static LocalDate toLocalDate(Date date) {
-        return date.toInstant().atZone(ZONE_ID).toLocalDate();
+        return date.toInstant().atZone(Constans.ZONE_ID).toLocalDate();
     }
 }

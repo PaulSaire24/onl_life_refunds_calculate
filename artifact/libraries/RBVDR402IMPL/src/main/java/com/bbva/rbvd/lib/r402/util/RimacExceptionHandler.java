@@ -1,9 +1,9 @@
 package com.bbva.rbvd.lib.r402.util;
 
 import com.bbva.apx.exception.business.BusinessException;
-import com.bbva.rbvd.dto.insrncsale.utils.RBVDErrors;
-import com.bbva.rbvd.dto.insrncsale.utils.RBVDValidation;
-import com.bbva.rbvd.dto.insrncsale.bo.ErrorRimacBO;
+import com.bbva.rbvd.dto.insurancerefunds.utils.Errors;
+import com.bbva.rbvd.dto.insurancerefunds.utils.Validation;
+import com.bbva.rbvd.dto.insurancerefunds.rimac.ErrorRimacBO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.client.HttpClientErrorException;
@@ -18,7 +18,7 @@ public class RimacExceptionHandler {
             this.clientExceptionHandler((HttpClientErrorException) exception);
         } else {
             LOGGER.info("RimacExceptionHandler - HttpServerErrorException");
-            throw RBVDValidation.build(RBVDErrors.SERVER_ERROR);
+            throw Validation.build(Errors.SERVER_ERROR);
         }
     }
 
@@ -30,7 +30,7 @@ public class RimacExceptionHandler {
     }
 
     private void throwingBusinessException(ErrorRimacBO rimacError) {
-        BusinessException businessException = RBVDValidation.build(RBVDErrors.ERROR_FROM_RIMAC);
+        BusinessException businessException = Validation.build(Errors.ERROR_FROM_RIMAC);
         businessException.setMessage(rimacError.getError().getHttpStatus() + " - " + rimacError.getError().getMessage());
         throw businessException;
     }
