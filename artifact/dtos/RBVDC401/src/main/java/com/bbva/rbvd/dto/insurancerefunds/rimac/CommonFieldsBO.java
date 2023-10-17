@@ -1,6 +1,9 @@
 package com.bbva.rbvd.dto.insurancerefunds.rimac;
 
-public class CommonFieldsBO {
+import java.io.Serializable;
+
+
+public class CommonFieldsBO implements Serializable {
     private String correo;
     private String telefono;
     private String ruc;

@@ -1,6 +1,9 @@
 package com.bbva.rbvd.dto.insurancerefunds.rimac;
 
-public class ErrorRimacBO {
+import java.io.Serializable;
+
+
+public class ErrorRimacBO implements Serializable {
 
     private ErrorResponseBO error;
 

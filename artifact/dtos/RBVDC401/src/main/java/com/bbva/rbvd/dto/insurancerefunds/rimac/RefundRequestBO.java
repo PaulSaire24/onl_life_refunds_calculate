@@ -1,6 +1,8 @@
 package com.bbva.rbvd.dto.insurancerefunds.rimac;
 
-public class RefundRequestBO {
+import java.io.Serializable;
+
+public class RefundRequestBO implements Serializable {
     private RefundCalculatedPayloadBO payload;
 
     public RefundCalculatedPayloadBO getPayload() {
