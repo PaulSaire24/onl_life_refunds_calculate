@@ -5,6 +5,7 @@ import com.bbva.elara.domain.transaction.Context;
 import com.bbva.elara.domain.transaction.ThreadContext;
 import javax.annotation.Resource;
 
+import com.bbva.pisd.lib.r014.PISDR014;
 import com.bbva.rbvd.dto.insurancerefunds.commons.DocumentTypeDTO;
 import com.bbva.rbvd.dto.insurancerefunds.commons.IdentityDocumentDTO;
 import com.bbva.rbvd.dto.insurancerefunds.refund.ParticipantDTO;
@@ -49,6 +50,8 @@ public class RBVDR401Test {
 	private RBVDR401 rbvdR401;
 	@Resource(name = "rbvdR402")
 	private RBVDR402 rbvdr402;
+	@Resource(name = "pisdR014")
+	private PISDR014 pisdr014;
 
 	@Resource(name = "applicationConfigurationService")
 	private ApplicationConfigurationService applicationConfigurationService;

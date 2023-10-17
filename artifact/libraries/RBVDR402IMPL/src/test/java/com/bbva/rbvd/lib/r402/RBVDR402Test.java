@@ -77,15 +77,15 @@ public class RBVDR402Test {
 	public void executeTest(){
 		LOGGER.info("executeTest Start");
 
-		//when(pisdr014.executeSignatureConstruction(anyString(),anyString(),anyString(),anyString(),anyString())).thenReturn(new SignatureAWS());
 		SignatureAWS signatureAWS = new SignatureAWS("sfe","hhh","6454454","jhgygygygyg");
-		when(pisdr014.executeSignatureConstruction(anyString(), anyString(), anyString(), anyString(), anyString()))
-				.thenReturn(signatureAWS);
+
+		/*when(pisdr014.executeSignatureConstruction(anyString(), anyString(), anyString(), anyString(), anyString()))
+				.thenReturn(signatureAWS);*/
 
 		RefundRequestBO payload = new RefundRequestBO();
-		String traceId = "123456789";
+		String requestJson = "requestJson";
 
-		rbvdR402.executeCalculateService(payload,traceId);
+		rbvdR402.executeCalculateService(signatureAWS,requestJson);
 
 		Assert.assertEquals(0, context.getAdviceList().size());
 	}
@@ -94,18 +94,17 @@ public class RBVDR402Test {
 	public void executeTestException(){
 		LOGGER.info("executeTestException Start");
 
-		//when(pisdr014.executeSignatureConstruction(anyString(),anyString(),anyString(),anyString(),anyString())).thenReturn(new SignatureAWS());
 		SignatureAWS signatureAWS = new SignatureAWS("sfe","hhh","6454454","jhgygygygyg");
-		when(pisdr014.executeSignatureConstruction(anyString(), anyString(), anyString(), anyString(), anyString()))
-				.thenReturn(signatureAWS);
+		/*when(pisdr014.executeSignatureConstruction(anyString(), anyString(), anyString(), anyString(), anyString()))
+				.thenReturn(signatureAWS);*/
 
 		when(externalApiConnector.postForObject(anyString(), any(HttpEntity.class),eq(RefundCalculateResponseBO.class))).
 				thenThrow(new RestClientException("ANY ERROR",new Throwable()));
 
 		RefundRequestBO payload = new RefundRequestBO();
-		String traceId = "123456789";
+		String requestJson = "requestJson";
 
-		rbvdR402.executeCalculateService(payload,traceId);
+		rbvdR402.executeCalculateService(signatureAWS,requestJson);
 	}
 
 }

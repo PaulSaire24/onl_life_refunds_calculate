@@ -1,4 +1,4 @@
-package com.bbva.rbvd.lib.r402.util;
+package com.bbva.rbvd.lib.r401.util;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -16,8 +16,6 @@ public class JsonUtil {
     }
 
     public static JsonUtil getInstance() { return INSTANCE; }
-
     public String serialization(Object o) { return this.gson.toJson(o); }
 
-    public <T> T deserialization(String src, Class<T> clazz) { return this.gson.fromJson(src, clazz); }
 }

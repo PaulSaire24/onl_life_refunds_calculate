@@ -3,5 +3,6 @@
 		http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
 	<bean id="rbvdR401" class="com.bbva.rbvd.lib.r401.impl.RBVDR401Impl" parent="rbvdR401Abstract">
 		<property name="rbvdR402" ref="rbvdR402"/>
+		<property name="pisdR014" ref="pisdR014"/>
 	</bean>
 </beans>
