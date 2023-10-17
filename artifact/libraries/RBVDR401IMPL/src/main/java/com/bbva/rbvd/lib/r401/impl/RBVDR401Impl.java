@@ -11,7 +11,6 @@ import com.bbva.rbvd.lib.r401.util.JsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 import javax.ws.rs.HttpMethod;
 import java.util.List;
 

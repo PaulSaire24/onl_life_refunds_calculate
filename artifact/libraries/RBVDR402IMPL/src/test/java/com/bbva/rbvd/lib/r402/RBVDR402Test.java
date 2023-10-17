@@ -16,7 +16,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
-import com.bbva.pisd.lib.r014.PISDR014;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.aop.framework.Advised;
@@ -48,10 +47,6 @@ public class RBVDR402Test {
 
 	@Resource(name = "rbvdR402")
 	private RBVDR402 rbvdR402;
-
-
-	@Resource(name = "pisdR014")
-	private PISDR014 pisdr014;
 
 	@Resource(name = "applicationConfigurationService")
 	private ApplicationConfigurationService applicationConfigurationService;

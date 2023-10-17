@@ -80,11 +80,6 @@
 		</dependency>
 		<!-- End test dependencies -->
 		<dependency>
-			<groupId>com.bbva.pisd</groupId>
-			<artifactId>PISDR014</artifactId>
-			<version>0.10.0</version>
-		</dependency>
-		<dependency>
 			<groupId>com.bbva.elara</groupId>
 			<artifactId>elara-utility-api-connector</artifactId>
 			<version>${apx.api.connector.version}</version>

@@ -2,8 +2,7 @@ package com.bbva.rbvd.lib.r402.impl;
 
 import com.bbva.pisd.dto.insurance.amazon.SignatureAWS;
 import com.bbva.rbvd.dto.insurancerefunds.rimac.RefundCalculateResponseBO;
-import com.bbva.rbvd.dto.insurancerefunds.rimac.RefundRequestBO;
-import com.bbva.rbvd.dto.insurancerefunds.utils.Constans;
+import com.bbva.rbvd.dto.insurancerefunds.utils.Constans.Headers;
 import com.bbva.rbvd.dto.insurancerefunds.utils.InsuranceRefundsProperties;
 import com.bbva.rbvd.lib.r402.util.JsonUtil;
 import com.bbva.rbvd.lib.r402.util.RimacExceptionHandler;
@@ -48,12 +47,12 @@ public class RBVDR402Impl extends RBVDR402Abstract {
 
 	private HttpHeaders createHttpHeadersAWS(SignatureAWS signature) {
 		HttpHeaders headers = new HttpHeaders();
-		MediaType mediaType = new MediaType("application", "json", StandardCharsets.UTF_8);
+		MediaType mediaType = new MediaType(Headers.APPLICATION, Headers.JSON, StandardCharsets.UTF_8);
 		headers.setContentType(mediaType);
-		headers.set(Constans.AUTHORIZATION, signature.getAuthorization());
-		headers.set("X-Amz-Date", signature.getxAmzDate());
-		headers.set("x-api-key", signature.getxApiKey());
-		headers.set("traceId", signature.getTraceId());
+		headers.set(Headers.AUTHORIZATION, signature.getAuthorization());
+		headers.set(Headers.AMZ_DATE, signature.getxAmzDate());
+		headers.set(Headers.API_KEY, signature.getxApiKey());
+		headers.set(Headers.TRACE_ID, signature.getTraceId());
 		return headers;
 	}
 
