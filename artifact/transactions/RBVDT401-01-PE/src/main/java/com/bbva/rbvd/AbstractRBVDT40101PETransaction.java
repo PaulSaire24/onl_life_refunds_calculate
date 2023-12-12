@@ -1,9 +1,11 @@
 package com.bbva.rbvd;
 
 import com.bbva.elara.transaction.AbstractTransaction;
-import com.bbva.rbvd.dto.insurancerefunds.refund.ParticipantDTO;
-import com.bbva.rbvd.dto.insurancerefunds.refund.RefundCalculateDTO;
-import java.util.List;
+import com.bbva.rbvd.dto.lifeinsrc.seguro.BusinessAgentDTO;
+import com.bbva.rbvd.dto.lifeinsrc.seguro.ContactDetailsDTO;
+import com.bbva.rbvd.dto.lifeinsrc.seguro.DataDTO;
+import com.bbva.rbvd.dto.lifeinsrc.seguro.EmployessDTO;
+import com.bbva.rbvd.dto.lifeinsrc.seguro.ProductDTO;
 
 /**
  * In this class, the input and output data is defined automatically through the setters and getters.
@@ -15,16 +17,37 @@ public abstract class AbstractRBVDT40101PETransaction extends AbstractTransactio
 
 
 	/**
-	 * Return value for input parameter participants
+	 * Return value for input parameter employess
 	 */
-	protected List<ParticipantDTO> getParticipants(){
-		return (List<ParticipantDTO>)this.getParameter("participants");
+	protected EmployessDTO getEmployess(){
+		return (EmployessDTO)this.getParameter("employess");
 	}
 
 	/**
-	 * Set value for List<RefundCalculateDTO> output parameter data
+	 * Return value for input parameter product
 	 */
-	protected void setData(final List<RefundCalculateDTO> field){
+	protected ProductDTO getProduct(){
+		return (ProductDTO)this.getParameter("product");
+	}
+
+	/**
+	 * Return value for input parameter contactDetails
+	 */
+	protected ContactDetailsDTO getContactdetails(){
+		return (ContactDetailsDTO)this.getParameter("contactDetails");
+	}
+
+	/**
+	 * Return value for input parameter businessAgent
+	 */
+	protected BusinessAgentDTO getBusinessagent(){
+		return (BusinessAgentDTO)this.getParameter("businessAgent");
+	}
+
+	/**
+	 * Set value for DataDTO output parameter data
+	 */
+	protected void setData(final DataDTO field){
 		this.addParameter("data", field);
 	}
 }

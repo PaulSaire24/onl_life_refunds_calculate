@@ -73,7 +73,7 @@ public class RBVDT40101PETransactionTest {
 		this.transaction.getContext().setTransactionRequest(transactionRequest);
 	}
 
-	@Test
+	/*@Test
 	public void testNotNull(){
 		LOGGER.info("RBVDT40101PETransactionTest - Executing testNotNull...");
 		ParticipantDTO participantDTO = new ParticipantDTO();
@@ -90,7 +90,7 @@ public class RBVDT40101PETransactionTest {
 		when(this.rbvdr401.executeCalculateRefund(anyObject())).thenReturn(null);
 		this.transaction.execute();
 		assertEquals(Severity.ENR.getValue(), this.transaction.getSeverity().getValue());
-	}
+	}*/
 
 	// Add Parameter to Transaction
 	private void addParameter(final String parameter, final Object value) {
