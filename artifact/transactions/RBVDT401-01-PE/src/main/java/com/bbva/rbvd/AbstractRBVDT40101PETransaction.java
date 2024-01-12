@@ -1,8 +1,7 @@
 package com.bbva.rbvd;
 
 import com.bbva.elara.transaction.AbstractTransaction;
-import com.bbva.rbvd.dto.insurancerefunds.refund.ParticipantDTO;
-import com.bbva.rbvd.dto.insurancerefunds.refund.RefundCalculateDTO;
+import com.bbva.rbvd.dto.lifeinsrc.seguro.PayrollDTO;
 import java.util.List;
 
 /**
@@ -15,16 +14,16 @@ public abstract class AbstractRBVDT40101PETransaction extends AbstractTransactio
 
 
 	/**
-	 * Return value for input parameter participants
+	 * Return value for input parameter payroll
 	 */
-	protected List<ParticipantDTO> getParticipants(){
-		return (List<ParticipantDTO>)this.getParameter("participants");
+	protected List<PayrollDTO> getPayroll(){
+		return (List<PayrollDTO>)this.getParameter("payroll");
 	}
 
 	/**
-	 * Set value for List<RefundCalculateDTO> output parameter data
+	 * Set value for String output parameter Location
 	 */
-	protected void setData(final List<RefundCalculateDTO> field){
-		this.addParameter("data", field);
+	protected void setLocation(final String field){
+		this.addParameter("Location", field);
 	}
 }
