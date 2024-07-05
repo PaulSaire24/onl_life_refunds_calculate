@@ -47,11 +47,7 @@ public class RBVDR401Impl extends RBVDR401Abstract {
 
 		}catch (BusinessException ex){
 			this.addAdviceWithDescription(ex.getAdviceCode(), ex.getMessage());
-		}catch (Exception e){
-			LOGGER.debug("***** RBVDR401Impl - executeCalculateRefund ***** Exception: {}", e.getMessage());
-			this.addAdviceWithDescription(Constans.Error.BBVAE3 + Constans.Error.COD_008411, e.getMessage());
 		}
-
 		return refunds;
 
 	}
