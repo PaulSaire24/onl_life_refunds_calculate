@@ -18,4 +18,16 @@ public class Constans {
         public static final String TRACE_ID = "traceId";
 
     }
+
+    public static final class Error{
+        private Error() {
+        }
+        public static final String BBVAE1 = "BBVAE1";
+        public static final String BBVAE2 = "BBVAE2";
+        public static final String BBVAE3 = "BBVAE3";
+        public static final String COD_008411 = "008411";
+
+    }
+
+
 }
