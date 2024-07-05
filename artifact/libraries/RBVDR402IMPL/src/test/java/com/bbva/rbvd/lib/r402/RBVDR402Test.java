@@ -1,6 +1,7 @@
 package com.bbva.rbvd.lib.r402;
 
 import com.bbva.apx.exception.business.BusinessException;
+import com.bbva.apx.exception.io.network.TimeoutException;
 import com.bbva.elara.configuration.manager.application.ApplicationConfigurationService;
 import com.bbva.elara.domain.transaction.Context;
 import com.bbva.elara.domain.transaction.ThreadContext;
@@ -95,6 +96,24 @@ public class RBVDR402Test {
 
 		when(externalApiConnector.postForObject(anyString(), any(HttpEntity.class),eq(RefundCalculateResponseBO.class))).
 				thenThrow(new RestClientException("ANY ERROR",new Throwable()));
+
+		RefundRequestBO payload = new RefundRequestBO();
+		String requestJson = "requestJson";
+
+		rbvdR402.executeCalculateService(signatureAWS,requestJson);
+	}
+
+
+	@Test(expected = BusinessException.class)
+	public void executeTestTimeoutException(){
+		LOGGER.info("executeTestTimeoutException Start");
+
+		SignatureAWS signatureAWS = new SignatureAWS("sfe","hhh","6454454","jhgygygygyg");
+		/*when(pisdr014.executeSignatureConstruction(anyString(), anyString(), anyString(), anyString(), anyString()))
+				.thenReturn(signatureAWS);*/
+
+		when(externalApiConnector.postForObject(anyString(), any(HttpEntity.class),eq(RefundCalculateResponseBO.class))).
+				thenThrow(new TimeoutException("BBVAE2008411", "Lo sentimos, el servicio de simulación de Rimac está tardando más de lo esperado. Por favor, inténtelo de nuevo más tarde."));
 
 		RefundRequestBO payload = new RefundRequestBO();
 		String requestJson = "requestJson";

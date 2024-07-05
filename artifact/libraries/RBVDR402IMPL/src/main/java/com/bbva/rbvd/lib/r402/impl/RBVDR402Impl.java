@@ -1,7 +1,10 @@
 package com.bbva.rbvd.lib.r402.impl;
 
+import com.bbva.apx.exception.business.BusinessException;
+import com.bbva.apx.exception.io.network.TimeoutException;
 import com.bbva.pisd.dto.insurance.amazon.SignatureAWS;
 import com.bbva.rbvd.dto.insurancerefunds.rimac.RefundCalculateResponseBO;
+import com.bbva.rbvd.dto.insurancerefunds.utils.Constans;
 import com.bbva.rbvd.dto.insurancerefunds.utils.Constans.Headers;
 import com.bbva.rbvd.dto.insurancerefunds.utils.InsuranceRefundsProperties;
 import com.bbva.rbvd.lib.r402.util.JsonUtil;
@@ -19,7 +22,6 @@ import java.nio.charset.StandardCharsets;
 public class RBVDR402Impl extends RBVDR402Abstract {
 	private static final Logger LOGGER = LoggerFactory.getLogger(RBVDR402Impl.class);
 
-
 	@Override
 	public RefundCalculateResponseBO executeCalculateService(SignatureAWS signatureAWS, String requestJson) {
 
@@ -35,7 +37,11 @@ public class RBVDR402Impl extends RBVDR402Abstract {
 			LOGGER.debug("*** RBVDR402Impl - executeCalculateService *** Exception: {}", e.getMessage());
 			RimacExceptionHandler exceptionHandler = new RimacExceptionHandler();
 			exceptionHandler.handler(e);
+		}catch(TimeoutException ex){
+			LOGGER.debug("***** RBVDR402Impl - executeCalculateService ***** TimeoutException: {}", ex.getMessage());
+			throw new BusinessException(Constans.Error.BBVAE2 + Constans.Error.COD_008411, false, "Lo sentimos, el servicio de rimac está tardando más de lo esperado. Por favor,  intentelo nuevamente en unos minutos.");
 		}
+
 		LOGGER.info("executeCalculateRefund response {}",response);
 		LOGGER.info("executeCalculateRefund end");
 
