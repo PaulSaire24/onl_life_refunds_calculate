@@ -38,7 +38,7 @@ public class RBVDR402Impl extends RBVDR402Abstract {
 			RimacExceptionHandler exceptionHandler = new RimacExceptionHandler();
 			exceptionHandler.handler(e);
 		}catch(TimeoutException ex){
-			LOGGER.debug("***** RBVDR203Impl - executeDocumentRimacService ***** TimeoutException: {}", ex.getMessage());
+			LOGGER.debug("***** RBVDR402Impl - executeCalculateService ***** TimeoutException: {}", ex.getMessage());
 			throw new BusinessException(Constans.Error.BBVAE2, false, "Lo sentimos, el servicio de Carga Inicial de rimac está tardando más de lo esperado. Por favor,  intentelo nuevamente en unos minutos.");
 		}
 
