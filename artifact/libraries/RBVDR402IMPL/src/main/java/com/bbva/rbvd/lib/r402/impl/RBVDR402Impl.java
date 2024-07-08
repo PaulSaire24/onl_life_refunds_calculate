@@ -39,7 +39,7 @@ public class RBVDR402Impl extends RBVDR402Abstract {
 			exceptionHandler.handler(e);
 		}catch(TimeoutException ex){
 			LOGGER.debug("***** RBVDR402Impl - executeCalculateService ***** TimeoutException: {}", ex.getMessage());
-			throw new BusinessException(Constans.Error.BBVAE2 + Constans.Error.COD_008411, false, "Lo sentimos, el servicio de Rimac está tardando más de lo esperado. Por favor,  intentelo nuevamente en unos minutos.");
+			throw new BusinessException(Constans.Error.BBVAE2 + Constans.Error.COD_008411, false, "Actualmente estamos experimentando demoras al contactar con el servicio de Rimac. Por favor, intentelo nuevamente en unos minutos.");
 		}
 
 		LOGGER.info("executeCalculateRefund response {}",response);
