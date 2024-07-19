@@ -49,6 +49,10 @@
 						</dto>
 					</dto>
 				</list>
+				<dto order="4" name="accumulatedTotalAmount" mandatory="0" package="com.bbva.rbvd.dto.insurancerefunds.refund.AccumulatedTotalAmountDTO" artifactId="RBVDC401">
+					<parameter order="1" name="amount" mandatory="1" type="Double" size="9"/>
+					<parameter order="2" name="currency" mandatory="1" type="String" size="7"/>
+				</dto>
 			</dto>
 		</list>
 	</paramsOut>

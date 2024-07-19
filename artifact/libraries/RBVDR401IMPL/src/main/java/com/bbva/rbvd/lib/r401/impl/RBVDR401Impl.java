@@ -8,12 +8,14 @@ import com.bbva.rbvd.dto.insurancerefunds.rimac.RefundCalculateResponseBO;
 import com.bbva.rbvd.dto.insurancerefunds.rimac.RefundRequestBO;
 import com.bbva.rbvd.dto.insurancerefunds.utils.Constans;
 import com.bbva.rbvd.dto.insurancerefunds.utils.InsuranceRefundsProperties;
+import com.bbva.rbvd.lib.r401.dao.DataHandler;
 import com.bbva.rbvd.lib.r401.transform.bean.RefundRequestBean;
 import com.bbva.rbvd.lib.r401.util.JsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.HttpMethod;
+import java.math.BigDecimal;
 import java.util.List;
 
 import static com.bbva.rbvd.lib.r401.transform.list.RefundCalculateList.constructionResponse;
@@ -39,11 +41,13 @@ public class RBVDR401Impl extends RBVDR401Abstract {
 					uri, null, participantDTO.getTraceId());
 			LOGGER.info("***** RBVDR401Impl - executeCalculateRefund ***** signatureAWS: {}", signatureAWS);
 
-
+			DataHandler handlerData = new DataHandler(this.pisdR350);
+			BigDecimal insuranceProductId = handlerData.getProductInformationDB("841");
+			BigDecimal cumulo = handlerData.getCumulo(insuranceProductId, participantDTO.getCustomerId(), participantDTO.getIdentityDocument().getDocumentNumber());
 			RefundCalculateResponseBO response = this.rbvdR402.executeCalculateService(signatureAWS, requestJson);
 
 			LOGGER.info("RBVDR401Impl -- executeCalculateRefund end");
-			refunds= constructionResponse(response, participantDTO);
+			refunds= constructionResponse(response, participantDTO, cumulo);
 
 		}catch (BusinessException ex){
 			this.addAdviceWithDescription(ex.getAdviceCode(), ex.getMessage());

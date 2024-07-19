@@ -6,6 +6,7 @@ public class RefundCalculateDTO {
     private List<ParticipantDTO> participants;
     private TermDTO term;
     private List<RefundsDTO> refunds;
+    private AccumulatedTotalAmountDTO accumulatedTotalAmount;
 
     public List<ParticipantDTO> getParticipants() {
         return participants;
@@ -31,12 +32,21 @@ public class RefundCalculateDTO {
         this.refunds = refunds;
     }
 
+    public AccumulatedTotalAmountDTO getAccumulatedTotalAmount() {
+        return accumulatedTotalAmount;
+    }
+
+    public void setAccumulatedTotalAmount(AccumulatedTotalAmountDTO accumulatedTotalAmount) {
+        this.accumulatedTotalAmount = accumulatedTotalAmount;
+    }
+
     @Override
     public String toString() {
         return "RefundCalculateDTO{" +
                 "participants=" + participants +
                 ", term=" + term +
                 ", refunds=" + refunds +
+                ", accumulatedTotalAmount=" + accumulatedTotalAmount +
                 '}';
     }
 }
