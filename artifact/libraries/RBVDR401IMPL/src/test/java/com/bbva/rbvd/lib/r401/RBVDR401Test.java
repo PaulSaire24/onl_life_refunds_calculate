@@ -139,7 +139,7 @@ public class RBVDR401Test {
 		arguments.put("PARTICIPANT_ROLE_ID", new BigDecimal("2"));
 
 		when(pisdr350.executeGetASingleRow("PISD.GET_PRODUCT_INFORMATION_LIFE",arguments)).thenReturn(responseMockData1);
-		when(pisdr350.executeGetASingleRow("PISD.QUERY_GET_INSURANCE_AMOUNT",arguments1)).thenReturn(response);
+		when(pisdr350.executeGetListASingleRow("PISD.QUERY_GET_INSURANCE_AMOUNT",arguments1)).thenReturn(response);
 		when(rbvdr402.executeCalculateService(anyObject(),anyString())).thenReturn(refundCalculatedBO);
 		when(applicationConfigurationService.getProperty(anyString())).thenReturn("DNI");
 		when(pisdR014.executeSignatureConstruction(anyString(),anyString(),anyString(),anyString(),anyString())).thenReturn(new SignatureAWS());
@@ -174,13 +174,13 @@ public class RBVDR401Test {
 		lisMap.add(mapArgument);
 		lisMap.add(mapArgument2);
 		response.put("dtoInsurance",lisMap);
-		when(this.pisdr350.executeGetASingleRow(anyString(),anyMap())).thenReturn(response);
+		when(this.pisdr350.executeGetListASingleRow(anyString(),anyMap())).thenReturn(response);
 		BigDecimal insuranceProductId = dataHandler.getCumulo(new BigDecimal("123456"),"9784568","70221978");
 
 		Assert.assertNotNull(insuranceProductId);
 		Assert.assertEquals(new BigDecimal("28"),insuranceProductId);
 		Assert.assertEquals(0, context.getAdviceList().size());
-		verify(pisdr350, times(1)).executeGetASingleRow(anyString(), anyMap());
+		verify(pisdr350, times(1)).executeGetListASingleRow(anyString(), anyMap());
 	}
 
 

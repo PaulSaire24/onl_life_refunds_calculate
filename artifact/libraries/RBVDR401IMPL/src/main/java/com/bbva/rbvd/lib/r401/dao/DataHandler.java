@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.springframework.util.CollectionUtils;
 
 import static java.util.stream.Collectors.toList;
 import static org.springframework.util.CollectionUtils.isEmpty;
@@ -32,7 +33,9 @@ public class DataHandler {
         arguments.put("CUSTOMER_ID",customerId);
         arguments.put("PARTICIPANT_PERSONAL_ID",documentNumber);
         arguments.put("PARTICIPANT_ROLE_ID", new BigDecimal("2"));
-        Map<String, Object> responseQueryGetProductInformation =  this.pisdr350.executeGetASingleRow("PISD.QUERY_GET_INSURANCE_AMOUNT", arguments);
+        Map<String, Object> responseQueryGetProductInformation =  this.pisdr350.executeGetListASingleRow("PISD.QUERY_GET_INSURANCE_AMOUNT", arguments);
+
+
         return this.validateAndReturnCumulo(responseQueryGetProductInformation);
     }
 
