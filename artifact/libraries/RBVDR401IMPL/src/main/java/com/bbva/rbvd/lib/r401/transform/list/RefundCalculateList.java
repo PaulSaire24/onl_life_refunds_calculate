@@ -1,6 +1,12 @@
 package com.bbva.rbvd.lib.r401.transform.list;
 
-import com.bbva.rbvd.dto.insurancerefunds.refund.*;
+import com.bbva.rbvd.dto.insurancerefunds.refund.AccumulatedTotalAmountDTO;
+import com.bbva.rbvd.dto.insurancerefunds.refund.RefundCalculateDTO;
+import com.bbva.rbvd.dto.insurancerefunds.refund.RefundsDTO;
+import com.bbva.rbvd.dto.insurancerefunds.refund.TermDTO;
+import com.bbva.rbvd.dto.insurancerefunds.refund.UnitDTO;
+import com.bbva.rbvd.dto.insurancerefunds.refund.ParticipantDTO;
+
 import com.bbva.rbvd.dto.insurancerefunds.rimac.RefundCalculateResponseBO;
 import com.bbva.rbvd.dto.insurancerefunds.rimac.RefundCalculatedPayloadBO;
 import com.bbva.rbvd.dto.insurancerefunds.utils.Constans;

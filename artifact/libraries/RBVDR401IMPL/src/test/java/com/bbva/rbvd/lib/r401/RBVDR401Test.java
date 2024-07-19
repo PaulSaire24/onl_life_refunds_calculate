@@ -31,7 +31,12 @@ import org.springframework.aop.framework.Advised;
 import org.springframework.test.context.ContextConfiguration;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.*;
@@ -131,6 +136,7 @@ public class RBVDR401Test {
 		arguments.put("INSURANCE_PRODUCT_ID","124566");
 		arguments.put("CUSTOMER_ID","978568");
 		arguments.put("PARTICIPANT_PERSONAL_ID","70221978");
+		arguments.put("PARTICIPANT_ROLE_ID", new BigDecimal("2"));
 
 		when(pisdr350.executeGetASingleRow("PISD.GET_PRODUCT_INFORMATION_LIFE",arguments)).thenReturn(responseMockData1);
 		when(pisdr350.executeGetASingleRow("PISD.QUERY_GET_INSURANCE_AMOUNT",arguments1)).thenReturn(response);

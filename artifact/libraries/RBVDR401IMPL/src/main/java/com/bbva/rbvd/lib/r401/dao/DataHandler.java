@@ -31,6 +31,7 @@ public class DataHandler {
         arguments.put("INSURANCE_PRODUCT_ID",insuranceProductId);
         arguments.put("CUSTOMER_ID",customerId);
         arguments.put("PARTICIPANT_PERSONAL_ID",documentNumber);
+        arguments.put("PARTICIPANT_ROLE_ID", new BigDecimal("2"));
         Map<String, Object> responseQueryGetProductInformation =  this.pisdr350.executeGetASingleRow("PISD.QUERY_GET_INSURANCE_AMOUNT", arguments);
         return this.validateAndReturnCumulo(responseQueryGetProductInformation);
     }
